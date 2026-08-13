@@ -119,6 +119,5 @@ Este enrutamiento consiste en enviar un paquete a todos los miembros de un grupo
 Es un enrutamiento regular hacia un nodo que parece estar ubicado en **múltiples lugares** de la red de forma simultánea.
 
 Desde el punto de vista del algoritmo, se genera una topología aparente de **árbol sumidero** (_sink tree_) dirigida hacia ese "nodo" distribuido, permitiendo que el tráfico se dirija siempre al destino más próximo según las métricas de la red.
-# 3. Manejo de Tráfico.
-## 1. Congestión.
+
 
