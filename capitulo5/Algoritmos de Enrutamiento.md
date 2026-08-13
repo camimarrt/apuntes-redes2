@@ -1,19 +1,19 @@
 Responsable del envío de paquetes entre dos puntos a través de múltiples enlaces. Para la transmisión es necesario conocer la topología de red (conjunto de enrutadores y enlaces). Su función principal es enrutar paquetes.
 # 1. Conmutación de Paquetes de Almacenamiento y Reenvío.
 
-- Cómo funciona? 
+### Cómo funciona? 
 Los host envían paquetes a la red (routers) y los routers reenvían los paquetes. 
-### Servicios a la Capa de Transporte:
-Objetivos:
+## Servicios a la Capa de Transporte:
+### Objetivos:
 - Los servicios deben ser independientes de la tecnología del router.
 - La capa de transporte debe estar protegida del número, tipo y topología de los routers presentes. 
 - Las direcciones de red puestas a disposición de la capa de transporte deben utilizar un plan de numeración uniforme, incluso entre redes LAN y WAN.
 Tipos de Servicios:
 
-### Orientados a la Conexión - CIRCUITOS VIRTUALES:
+## Orientados a la Conexión - CIRCUITOS VIRTUALES:
 Los circuitos virtuales es la ruta entre el router origen hasta el router destino. Son utilizados para evitar elegir rutas nuevas para cada paquete. Las rutas se establecen por adelantado durante la conexión y se almacenan en las tablas del router. Dicha ruta se mantiene para toda la conexión. Cada paquete lleva un identificador que indica el CV al que pertenece.
 
-### NO orientados a la Conexión - DATAGRAMAS:
+## NO orientados a la Conexión - DATAGRAMAS:
 Los paquetes se envían a la red de forma individual y puede tomar caminos distintos unos de otros. No necesitan conexión previa, pero puede realizarse. Los paquetes se denominan Datagramas. 
 
 ![[Pasted image 20260810215003.png]]
