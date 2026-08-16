@@ -14,3 +14,11 @@ Sin embargo, a veces no es posible aumentar la capacidad, por lo que la mejor fo
 
 ### 2. Enrutamiento Consciente:
 El objetivo es que al calcular las rutas teniendo en cuenta la carga para alejar el tráfico de los caminos congestionados. La forma más directa es haciendo que las rutas con menor peso sean favorecidas a las rutas con menor carga.
+
+### 3. Control de Admisión:
+
+### 4. Regulación de Tráfico:
+
+### 5. Desprendimiento de Carga:
+
+### 6. 

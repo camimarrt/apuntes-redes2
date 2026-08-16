@@ -66,58 +66,77 @@ Solos los vecinos directos se enteran de los fallos y enlaces que dejan de funci
 
 ## 2.5. Enrutamiento por Estado de Enlace.
 
-Es un algoritmo robusto aunque requiere de mucho computo y memoria para almacenar las tablas de enrutamiento y recalcular dijkstra. Cada router tiene el mapa de la red y hace su tabla enrutamiento.
+Es un algoritmo robusto aunque requiere de mucho computo y memoria para almacenar las tablas de enrutamiento y recalcular dijkstra. Cada router tiene el mapa de la red y hace su propia tabla de enrutamiento con dijkstra.
 ### Pasos:
-1.  ***Descubrimiento:*** Conocer a sus vecinos directos y sus direcciones de red.
-2. ***Medición:*** Crea tráfico de prueba y calcula métricas a cada vecino. (Métricas se pude referir a retardo, ancho de banda o tráfico).
-3. ***Construir Paquetes:*** Empaqueta las mediciones en un paquete de estado de Enlace LSP que contiene la lista de vecinos y los pesos de los enlaces.
-4. ***Enviar y recibir paquetes:*** Inunda la red controladamente.
-5. ***Cálculo de rutas:*** Cada router tiene el grafo completo de la red y aplica Dijkstra para conocer los caminos más cortos.
+1.  ***Descubrimiento:*** Conoce a sus vecinos directos, envía un paquete especial HELLO en cada línea de enlace punto a punto, guarda sus direcciones de red. Un router designado en la LAN es seleccionado para jugar el papel de N en el protocolo de enrutamiento.
+2. ***Medición:*** Crea un tráfico de prueba y calcula métricas a cada vecino. (Métricas se pude referir al retardo, ancho de banda o tráfico, distancia, etc.). Mide el tiempo de ida y vuelta y dividiéndolo por dos, el router emisor puede obtener una estimación.
+3. ***Construir Paquetes:*** Cada enrutador construye un paquete "LSP (Link State Protocol)" que contenga todos los datos recabados (Remitente, numero de secuencia, antigüedad, lista de vecinos y el coste de cada uno) que contiene la lista de vecinos y los pesos de los enlaces.
+4. ***Enviar y recibir paquetes:*** Todos los routers deben recibir los paquetes de estado de enlace de forma rápida y fiable. Inunda la red controladamente con los paquetes creados. Los routers mantienen un registro de los números de secuencia recibidos, por cada paquete nuevo se fija en el numero de secuencia y si este es menor que el mayor recibido, lo considera obsoleto y los descarta. Si no, reenvía en todas sus líneas menos por la que llegó. Para evitar números de secuencia duplicados, se utilizan 32 bits. 
+5. ***Cálculo de rutas:*** Luego de recibir los paquetes cada router tiene suficiente información para crear el grafo completo de la red. Ejecuta Dijkstra para conocer los caminos más cortos a los demás routers.
 
-**Protocolos que utilizan esta técnica:** IS-IS, OSPF.
+#### **Protocolos que utilizan esta técnica:** 
+ - **IS-IS (Intermediate Sys- tem-to-Intermediate System):** Muchos ISP utilizan este protocolo de estado de enlace. Puede transportar información sobre múltiples protocolos de capa de red al mismo tiempo (por ejemplo, IP, IPX y AppleTalk).
+- **OSPF (Open Shortest Path First):** Diseñado por IETF. Incluyen un método auto estabilizador de inundación de actualizaciones de estado de enlace, el concepto de enrutador designado en una LAN y el método de cálculo y soporte de división de rutas y métricas múltiples.
+
 ## 2.6. Enrutamiento Jerárquico.
 
-Tiene una estrategia que gestiona el crecimiento de las redes mediante la división de los routers en "regiones" o "sistemas autónomos". No es necesario conocer los caminos, sino a hacia donde quedan los demás nodos. El enrutador guarda los detalles de su región cercana, y para el resto solo necesitan saber la línea por donde salir para llegar a una región específica.
+A veces, la red crece tanto que ya no es factible que cada router almacene una entrada para cada router por lo que se tiene una estrategia que gestiona el crecimiento de las redes mediante la división de los routers en "regiones" o "sistemas autónomos". 
+
+No es necesario conocer los caminos, sino a hacia donde quedan los demás nodos. El enrutador guarda los detalles de sobre como encaminar los paquetes a las regiones cercanas, y para el resto solo necesitan saber la línea por donde salir para llegar a una región específica.
 
 >[!danger] Desventaja!!
 > Puede resultar en caminos largos porque se prioriza la gestión sobre obtener la mejor ruta.
 
- La formula óptima que define el número óptimo de niveles es:
-$$ log(n)$$
+ La formula óptima que define el número óptimo de niveles para una red con $N$ routers es:
+$$ ln(N)$$
+Total de entradas requeridas:
+$$e*ln(N)$$
 ## 2.7. Enrutamiento de Difusión (Broadcasting).
 
-Consiste en enviar paquetes haciendo broadcast a todos los nodos de la red.
+Consiste en el envío simultaneo de paquetes a todos los nodos de la red.
 Existen cinco métodos principales:
 
 1. Enviar el mismo paquete a todas las direcciones de la red. Requiere que el router conozca la lista completa de nodos, y no es muy inteligente ya que consume mucho ancho de banda.
-2. ***Enrutamiento Multi-destino:*** Enviar paquete que contienen una lista de destino. Cada router:
-	- chequea la lista, 
-	- consulta su tabla,
-	- reenvía las copias con una tabla de con destino que incluyan las líneas siguientes.
-3. Inundación.
-4. ***RPF - Reverse Path Forwarding:***  En este método, un enrutador solo retransmite un paquete de difusión si este fue recibido a través de la **línea preferida** que se utiliza normalmente para llegar al origen del mensaje. Si el paquete llega por cualquier otra interfaz, es descartado para evitar bucles.
+2. ***Enrutamiento Multi-destino:*** Enviar paquete que contienen una lista de destino o un mapa de bits. Cada router que recibe un paquete, comprueba si los destinos de la lista incluye una de sus salidas de enlace. En ese caso, genera una copia del paquete y lo envía conjunto a una lista de los destinos que se vayan a utilizar en esa línea. 
+3. Inundación. (ya explicado arriba)
+4. ***RPF - Reverse Path Forwarding:***  En este método, un enrutador solo retransmite un paquete de difusión si este fue recibido a través de la **línea preferida** que se utiliza normalmente para llegar al origen del mensaje, si es así, lo más probable es que sea la primera copia de paquete y que este viene por la mejor ruta posible. Si el paquete llega por cualquier otra interfaz, es descartado para evitar bucles. 
 5. ***Uso de Spanning Trees:*** Cada enrutador copia un paquete entrante en todas las líneas que forman parte de su árbol de expansión, exceptuando la línea por la que llegó el mensaje. Genera el número mínimo de paquetes. Cada router debe tener un SPT.
 
 ## 2.8. Enrutamiento de Multidifusión.
+Primero, *Multicasting* consiste en enviar un mismo paquete a todos los miembros de un subconjunto de nodos. Los routers conocen los grupos y sus integrantes. Generalmente cada grupo tiene su propia dirección de red. Este enrutamiento consiste en enviar un paquete a todos los miembros de un grupo.
 
-Primero, *Multicasting* consiste en enviar un mismo paquete a todos los miembros de un subconjunto de nodos. Los routers conocen los grupos y sus integrantes. Generalmente cada grupo tiene su propia dirección de red.
+Está basado en el esquema de enrutamiento de difusión por arboles sumideros. Obtener el mejor STP depende de que si el árbol es denso o disperso.
 
-Este enrutamiento consiste en enviar un paquete a todos los miembros de un grupo.
+#### ***Qué ocurre con grupos densos?***
+Se necesita de un STP generado por un algoritmo de difusión. Este árbol de expansión es "podado" de tal forma a dejar en él solo los nodos que pertenecen al grupo.
+### Si se utiliza el Enrutamiento de estado de enlace:
+Cada enrutador conoce la topología de la red y construye su propio STP podado para cada remitente al grupo en cuestión. 
+Ej.: MOSPF (Multicast OSPF)
+### Si se utiliza el Enrutamiento de Vector Distancia:
+Para la poda se utiliza el algoritmos de RPF. Cada vez que un router sin hosts interesados en un grupo concreto y sin conexiones con otros routers recibe un mensaje multicast para ese grupo, responde con un mensaje PRUNE, indicando al vecino que envió el mensaje que no le envíe más multicasts del remitente para ese grupo. Cuando un router sin miembros de grupo entre sus propios hosts ha recibido tales mensajes en todas las líneas a las que envía el multicast, también puede responder con un mensaje PRUNE.
 
->[!danger]
-> ***Qué ocurre con grupos densos?***
->Se necesita de un STP generado por un algoritmo de difusión. El router almacena mxn árboles distintos. Fácil de implementar si ya se utilizan algoritmos de control de enlace (Estado de Enlace).
->En algoritmos de vector de distancia, se emplea RPF con mensajes PRUNE, que consisten en mensajes del router cuando no le interesan los paquetes.
->Ej.: DVMRP (distance vector multicast routing protocol)
->
->***Para grupos dispersos:***
->Se utiliza CBT (Core Base Tree), que emplea un solo árbol por grupo.  Este árbol parte de un nodo central hacia otros miembros, Ej.: PIM (Protocol Independent Multicast).
+Ej.: DVMRP (Distance Vector Multicast Routing Protocol)
+#### ***Para grupos dispersos:***
+Un diseño alternativo es el árbol de expansión Core Base Tree (CBT), que emplea un solo árbol por grupo. 
+Este árbol parte de un nodo central hacia otros miembros. Todos los routers se ponen de acuerdo en una raíz **núcleo** y construyen el árbol enviando un paquete desde cada miembro a la raíz. El árbol es la unión de los caminos trazados por estos paquetes. Para enviar a este grupo, un remitente envía un paquete al núcleo. Cuando el paquete llega al núcleo, es reenviado hacia abajo en el árbol.
+Tan pronto como un paquete alcanza el árbol, puede ser reenviado hacia arriba, hacia la raíz, así como hacia abajo por todas las otras ramas.
 
+*OBS.: Tener un árbol compartido no es óptimo para todas las fuentes. La ineficiencia depende de dónde se encuentren el núcleo y los remitentes, pero a menudo es razonable cuando el núcleo está en medio de los remitentes.*
+
+Ej.: PIM (Protocol Independent Multicast).
+
+
+> [!danger]
+> DESVENTAJA: El router almacena mxn árboles distintos.
 ## 2.9. Anycast Routing.
 
-*Anycast*, envía paquetes a UN miembro del grupo (el más cercano). 
-Es un enrutamiento regular hacia un nodo que parece estar ubicado en **múltiples lugares** de la red de forma simultánea.
+El **enrutamiento Anycast** es un modelo de entrega donde un paquete se envía a **un solo miembro** de un grupo de nodos, seleccionando específicamente al que se encuentre **más cercano** al emisor según la métrica de la red.
+En lugar de asignar una dirección única a un solo dispositivo, se le otorga la **misma dirección de red** a un grupo de nodos que ofrecen el mismo servicio en diferentes puntos del mundo 
+El Anycast genera una **topología aparente de árbol sumidero** dirigida hacia un "nodo" que parece estar ubicado en múltiples lugares simultáneamente.
 
-Desde el punto de vista del algoritmo, se genera una topología aparente de **árbol sumidero** (_sink tree_) dirigida hacia ese "nodo" distribuido, permitiendo que el tráfico se dirija siempre al destino más próximo según las métricas de la red.
+### - Qué es el Sink Tree?
+Se define como el conjunto de todas las **rutas óptimas** desde cualquier origen posible en la red hacia un nodo de destino específico. 
+Está basado en el ***Principio de la Optimalidad***, que indica que si un nodo X se encuentra en el camino óptimo de A a B, entonces la ruta de  X a A también es óptima.
+
 
 
