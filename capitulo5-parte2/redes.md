@@ -1,0 +1,1 @@
+C:\Users\ACER\Documents\Obsidian Vault\redesII
