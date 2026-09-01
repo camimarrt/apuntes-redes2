@@ -111,10 +111,6 @@ A pesar de su utilidad, los investigadores de red (como Kent y Mogul) demostraro
 
 En el protocolo moderno **IPv6, los routers intermedios ya no tienen permitido fragmentar paquetes bajo ninguna circunstancia**31more_horiz. Si un paquete es demasiado grande, el router lo descarta directamente y envía un mensaje de error al origen para que este reduzca el tamaño del paquete desde el host emisor, lo cual simplifica el trabajo de los routers y hace que el enrutamiento sea más rápido31more_horiz.
 
-
-
----
-
 Las principales causas de estos límites son:
 1. **Hardware:** Las limitaciones de la tecnología física de transmisión (por ejemplo, el tamaño máximo de una trama Ethernet es de 1,500 bytes).
 2. **Sistemas Operativos:** Restricciones de memoria (por ejemplo, búferes configurados a 512 bytes).
@@ -122,3 +118,6 @@ Las principales causas de estos límites son:
 4. **Estándares:** Cumplimiento de normas nacionales o internacionales.
 5. **Control de Errores:** El deseo de reducir el impacto y las retransmisiones provocadas por errores en el canal.
 6. **Uso del Canal:** Evitar que un solo paquete muy grande acapare la línea de comunicación durante demasiado tiempo.
+
+---
+Siguiente: [[SDN - Software Defined Networking.]] 

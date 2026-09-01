@@ -49,3 +49,5 @@ La primera tecnología estándar para comunicar el plano de control con el plano
 - **Coincidencia (_Match_):** Cuando llega un paquete, el conmutador compara campos de su cabecera (como la dirección IP de origen/destino o la dirección MAC) con las reglas de la tabla.
 - **Acción (_Action_):** Si hay una coincidencia, el hardware ejecuta de forma inmediata la acción asociada (por ejemplo: _"enviar por la interfaz física 3"_, _"descartar"_ o _"enviar al controlador externo"_).
 
+---
+Siguiente: [[IPv4]] 

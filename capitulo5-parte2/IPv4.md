@@ -162,7 +162,8 @@ Ejemplos :
 2. Estado de Enlace (ej. OSPF, IS-IS):
 3. IGRP
 
-
+---
+Siguiente: [[IPv6]] 
 
 
 

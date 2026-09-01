@@ -45,4 +45,5 @@ $$\text{Ejemplo: } \mathbf{8000:0000:0000:0000:123:4567:89AB:CDEF}$$
 $$\text{Ejemplo: } \mathbf{8000::0123:4567:89AB:CDEF}$$
 - Compatibilidad IPv4. Se pueden escribir las direcciones IPv4 colocando un doble dos puntos seguido de la direccion decimal con puntos habitual.
 
-$$\text{Ejemplo:    } \mathbf{::192.31.20.46}$$
+$$\text{Ejemplo:    } \mathbf{::192.31.20.46}$$---
+Siguiente: [[Protocolos]]

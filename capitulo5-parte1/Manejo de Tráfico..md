@@ -232,3 +232,5 @@ Para que todo esto funcione de forma justa, los enrutadores utilizan algoritmos 
 - Bufferboat: Los routers tienden a tener más memoria de lo que necesitan, que puede degradar el rendimiento de la red.
 - Estrangulamiento: La red detecta una congestión inminente y pide a los remitentes disminuir la velocidad de transmisión o ralentizar el tráfico ella misma.
 - Indicador de congestión: pérdida de paquetes.
+---
+Siguiente: [[Internetworking]]

@@ -138,5 +138,6 @@ El Anycast genera una **topología aparente de árbol sumidero** dirigida hacia 
 Se define como el conjunto de todas las **rutas óptimas** desde cualquier origen posible en la red hacia un nodo de destino específico. 
 Está basado en el ***Principio de la Optimalidad***, que indica que si un nodo X se encuentra en el camino óptimo de A a B, entonces la ruta de  X a A también es óptima.
 
+Siguiente: [[Manejo de Tráfico.]]
 
 
