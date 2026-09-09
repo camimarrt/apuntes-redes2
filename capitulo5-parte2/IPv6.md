@@ -27,7 +27,7 @@ En lugar de incorporar campos opcionales dentro de la cabecera fija, se introduc
 
 ![[Pasted image 20260829234337.png]]
 
-1. _Opciones salto a salto (hop-by-hop):_ Información que deben examinar todos los routers de la ruta (como el soporte de _jumboframes_ de más de 64 KB).
+1. _Opciones salto a salto (hop-by-hop):_ Información que deben examinar todos los routers de la ruta (como el soporte de _jumboframes_ de más  de 64 KB).
 2. _Opciones de destino:_ Información adicional exclusiva para el host receptor final.
 3. _Enrutamiento:_ Lista suelta de routers específicos a visitar en el camino.
 4. _Fragmentación:_ Datos para gestionar la fragmentación del datagrama por el host de origen.
@@ -47,4 +47,4 @@ $$\text{Ejemplo: } \mathbf{8000::0123:4567:89AB:CDEF}$$
 - Compatibilidad IPv4. Se pueden escribir las direcciones IPv4 colocando un doble dos puntos seguido de la direccion decimal con puntos habitual.
 
 $$\text{Ejemplo:    } \mathbf{::192.31.20.46}$$---
-Siguiente: [[Protocolos]]
+

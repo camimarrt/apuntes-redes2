@@ -50,4 +50,3 @@ La primera tecnología estándar para comunicar el plano de control con el plano
 - **Acción (_Action_):** Si hay una coincidencia, el hardware ejecuta de forma inmediata la acción asociada (por ejemplo: _"enviar por la interfaz física 3"_, _"descartar"_ o _"enviar al controlador externo"_).
 
 ---
-Siguiente: [[IPv4]] 

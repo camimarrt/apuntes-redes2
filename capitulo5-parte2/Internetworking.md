@@ -120,4 +120,4 @@ Las principales causas de estos límites son:
 6. **Uso del Canal:** Evitar que un solo paquete muy grande acapare la línea de comunicación durante demasiado tiempo.
 
 ---
-Siguiente: [[SDN - Software Defined Networking.]] 
+Siguiente: [[SDN - Software Defined Networking.]] - [[IPv4]] - [[IPv6]] 

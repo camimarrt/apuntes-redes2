@@ -163,7 +163,6 @@ Ejemplos :
 3. IGRP
 
 ---
-Siguiente: [[IPv6]] 
 
 
 

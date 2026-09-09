@@ -234,3 +234,4 @@ Para que todo esto funcione de forma justa, los enrutadores utilizan algoritmos 
 - Indicador de congestión: pérdida de paquetes.
 ---
 Siguiente: [[Internetworking]]
+Siguiente: [[Protocolos de Capa 3]]

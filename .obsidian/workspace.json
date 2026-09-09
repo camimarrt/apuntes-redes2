@@ -1,0 +1,234 @@
+{
+  "main": {
+    "id": "8d264ad9644f780c",
+    "type": "split",
+    "children": [
+      {
+        "id": "a5a8155c6c75dc1c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f626a829eb9e9116",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "capitulo6-capa de transporte/Capa de Transporte.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Capa de Transporte"
+            }
+          },
+          {
+            "id": "a3de3cff6ec998f2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "capitulo6-capa de transporte/Elementos de Protocolos.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Elementos de Protocolos"
+            }
+          },
+          {
+            "id": "207b194f07a853c7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "redes.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "redes"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a0ec603385708cc0",
+    "type": "split",
+    "children": [
+      {
+        "id": "a298bfa178f79bcd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d0f9262672f674fa",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de archivos"
+            }
+          },
+          {
+            "id": "c3a798345330cff4",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Buscar"
+            }
+          },
+          {
+            "id": "f5c43f807ea5286e",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "d28c6585ad86f9b0",
+    "type": "split",
+    "children": [
+      {
+        "id": "27c4a33f8e5f965b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2edf19ed4594a96b",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "redes.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Enlaces entrantes"
+            }
+          },
+          {
+            "id": "5f39dbe25c36a401",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "redes.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Enlaces salientes"
+            }
+          },
+          {
+            "id": "a63b6f0156568e82",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "bf7852ab0f15fa45",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas las propiedades"
+            }
+          },
+          {
+            "id": "aadf6a8bebcbb292",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "redes.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Esquema"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir selector rápido": false,
+      "graph:Abrir vista gráfica": false,
+      "canvas:Crear nuevo lienzo": false,
+      "daily-notes:Abrir la nota de hoy": false,
+      "templates:Insertar plantilla": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Crear nueva base": false
+    }
+  },
+  "active": "207b194f07a853c7",
+  "lastOpenFiles": [
+    "capitulo6-capa de transporte/Capa de Transporte.md",
+    "capitulo5-parte1/Manejo de Tráfico..md",
+    "capitulo5-parte1/Algoritmos de Enrutamiento.md",
+    "Teoría - Ejercicios..md",
+    "Pasted image 20260908195525.png",
+    "Pasted image 20260908195506.png",
+    "capitulo6-capa de transporte/Elementos de Protocolos.md",
+    "Pasted image 20260908145450.png",
+    "capitulo5-parte2/Protocolos de Capa 3.md",
+    "capitulo5-parte2/IPv6.md",
+    "capitulo5-parte2/IPv4.md"
+  ]
+}

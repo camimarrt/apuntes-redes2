@@ -20,7 +20,6 @@ El  ARP es el puente que permite comunicar el mundo de las direcciones lógicas 
 Para entenderlo de manera simple, debes saber que los sistemas operativos y los programas se comunican usando direcciones IP, pero las tarjetas de red físicas (NIC, como las de Ethernet) no entienden de IPs; ellas solo saben enviar y recibir datos utilizando su **dirección física MAC de 48 bits** grabada de fábrica. ARP es el traductor que se encarga de averiguar a qué dirección MAC corresponde una dirección IP determinada.
 
 #### ¿Cómo funciona el proceso básico de ARP?
-
 Cuando el Host A quiere enviar un paquete al Host B dentro de su misma red, ocurre lo siguiente:
 1. **Pregunta en Broadcast:** El Host A conoce la dirección IP del Host B, pero no su MAC. Como no sabe a dónde enviarlo físicamente, manda un mensaje especial de broadcast a toda la red que dice: "¿Quién tiene la dirección IP X.X.X.X? Por favor, envíame tu dirección MAC". 
 2. **La respuesta en Unicast:** Todos los equipos reciben la pregunta, pero la ignoran al ver que no es su IP. Únicamente el dueño de esa IP responde directamente al Host A diciéndole: "Yo tengo esa IP, mi dirección MAC es Y-Y-Y-Y".
@@ -36,7 +35,6 @@ Cuando el Host A quiere enviar un paquete al Host B dentro de su misma red, ocur
 ### C) DHCP - Dynamic Host Configuration Protocol:
 El DHCP es el servicio encargado de asignar de forma automática y temporal direcciones IP y otros parámetros de configuración a los dispositivos que se conectan a una red.
 Sin DHCP, un administrador tendría que configurar a mano cada computadora, teléfono o impresora de la oficina, lo cual resulta sumamente tedioso y propenso a cometer errores de digitación.
-
 ##### Datos que configura DHCP en un dispositivo:
 Además de otorgar una **dirección IP** libre para que el dispositivo pueda comunicarse, el servidor DHCP le entrega automáticamente otros parámetros esenciales:
 1. **Máscara de subred:** Indica el tamaño y límite de la red local.
@@ -53,11 +51,8 @@ Además de otorgar una **dirección IP** libre para que el dispositivo pueda com
 
 ### D) MPLS - MultiProtocol Label Switching :
 El protocolo MPLS es una tecnología utilizada principalmente por los proveedores de servicios de Internet (ISP) para mover el tráfico de datos a través de sus redes de manera sumamente rápida y eficiente.
-
 En el enrutamiento IP tradicional, cuando un paquete llega a un router, este debe examinar la dirección IP de destino completa (de 32 o 128 bits), realizar búsquedas complejas en su tabla de enrutamiento y buscar la coincidencia de prefijo más larga para decidir a dónde enviarlo. Este proceso puede resultar lento cuando hay millones de rutas.
-
 Agregan una **etiqueta** al paquete cuando entra a la red. A partir de ese momento, los routers internos de la red solo leen esa etiqueta. Como la etiqueta es simplemente un número entero pequeño, el router la usa como un índice directo en una tabla interna, encontrando la interfaz de salida de forma casi instantánea.
-
 #### Componentes:
 1. **LER (Label Edge Router - Router de borde):** Se encuentra en los límites de la red MPLS. Cuando un paquete IP común entra a la red, el LER analiza su dirección IP de destino, decide qué ruta debe seguir, le añade la cabecera con la **etiqueta** adecuada y lo introduce en la red MPLS. Cuando el paquete sale de la red MPLS hacia su destino final, otro LER le quita la etiqueta y lo entrega como un paquete IP normal.
 2. **LSR (Label Switched Router - Router de conmutación):** Son los routers internos de la red. No miran las IPs; solo reciben el paquete, leen su etiqueta, consultan la tabla interna, reemplazan la etiqueta por una nueva (_label swapping_) y lo envían al siguiente router. Las etiquetas solo tienen un significado local entre routers vecinos.
