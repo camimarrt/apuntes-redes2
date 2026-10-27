@@ -1,6 +1,8 @@
 {
   "enabledCssSnippets": [
-    "obsidian",
-    "zmiscolores"
+    "zmiscolores",
+    "bullets",
+    "carpetas",
+    "colored"
   ]
 }
